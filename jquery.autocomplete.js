@@ -403,6 +403,9 @@ $.Autocompleter.defaults = {
 	formatMatch: null,
 	autoFill: false,
 	width: 0,
+	topOffset: 0,
+	leftOffset: 0,
+	noResultsDialog: false,
 	multiple: false,
 	multipleSeparator: ", ",
 	highlight: function(value, term) {
@@ -700,8 +703,8 @@ $.Autocompleter.Select = function (options, input, select, config) {
 			var offset = $(input).offset();
 			element.css({
 				width: typeof options.width == "string" || options.width > 0 ? options.width : $(input).width(),
-				top: offset.top + input.offsetHeight,
-				left: offset.left
+				top: offset.top + input.offsetHeight + options.topOffset,
+				left: offset.left + options.leftOffset
 			}).show();
             if(options.scroll) {
                 list.scrollTop(0);
